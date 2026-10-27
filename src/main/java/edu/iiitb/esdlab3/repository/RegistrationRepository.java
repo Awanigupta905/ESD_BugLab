@@ -23,7 +23,7 @@ public interface RegistrationRepository
             RegistrationStatus status
     );
 
-    @Query("SELECT r FROM Registration r WHERE r.event.id = :eventId")
+    @Query("SELECT r FROM Registration r WHERE r.event.id = :eventId AND r.status = edu.iiitb.esdlab3.entity.RegistrationStatus.ACTIVE")
     List<Registration> findActiveByEventId(
             @Param("eventId") Long eventId
     );
