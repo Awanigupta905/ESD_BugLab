@@ -98,4 +98,14 @@ public class ApiExceptionHandler {
 
         return error(HttpStatus.BAD_REQUEST, "Malformed request", req);
     }
+    @ExceptionHandler(UnauthorizedOperationException.class)
+    public ResponseEntity<ApiError> unauthorizedOperation(
+            UnauthorizedOperationException ex, HttpServletRequest req) {
+        return error(HttpStatus.FORBIDDEN, ex.getMessage(), req);
+    }
+    @ExceptionHandler(AlreadyCheckedInException.class)
+    public ResponseEntity<ApiError> alreadyCheckedIn(
+            AlreadyCheckedInException ex, HttpServletRequest req) {
+        return error(HttpStatus.CONFLICT, ex.getMessage(), req);
+    }
 }

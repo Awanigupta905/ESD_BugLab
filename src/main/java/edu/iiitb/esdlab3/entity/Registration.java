@@ -31,6 +31,9 @@ public class Registration {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    @Column(nullable = false)
+    private boolean checkedIn = false;
+
     public Registration(
             Event event,
             String studentEmail,
@@ -44,5 +47,8 @@ public class Registration {
 
     public void setStatus(RegistrationStatus status) {
         this.status = status;
+    }
+    public void markCheckedIn() {
+        this.checkedIn = true;
     }
 }

@@ -4,7 +4,7 @@ import edu.iiitb.esdlab3.entity.Registration;
 import edu.iiitb.esdlab3.entity.RegistrationStatus;
 
 import java.util.List;
-
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -27,4 +27,6 @@ public interface RegistrationRepository
     List<Registration> findActiveByEventId(
             @Param("eventId") Long eventId
     );
+    Optional<Registration> findByEvent_IdAndStudentEmailIgnoreCaseAndStatus(
+            Long eventId, String studentEmail, RegistrationStatus status);
 }

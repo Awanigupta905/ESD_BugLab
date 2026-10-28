@@ -19,6 +19,7 @@ public class RegistrationResponse {
     private String studentEmail;
     private RegistrationStatus status;
     private LocalDateTime createdAt;
+    private boolean checkedIn;                 // change 1: new field, last one
 
     public static RegistrationResponse from(Registration r) {
         return new RegistrationResponse(
@@ -26,7 +27,8 @@ public class RegistrationResponse {
                 r.getEvent().getId(),
                 r.getStudentEmail(),
                 r.getStatus(),
-                r.getCreatedAt()
+                r.getCreatedAt(),              // change 2: add a comma here
+                r.isCheckedIn()                // change 2: new last argument
         );
     }
 }
